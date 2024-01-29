@@ -1,0 +1,119 @@
+\documentclass[12pt]{article}
+\usepackage{braket}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage[export]{adjustbox}
+\usepackage{listings}
+\usepackage{mathcomp}
+\usepackage{hyperref}
+\usepackage{bm,amsmath}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{bigints}
+\usepackage{listings}
+\usepackage{color}
+\hypersetup{
+colorlinks=true,
+linkcolor=blue,
+filecolor=magenta,
+urlcolor=cyan,
+pdftitle={Overleaf Example},
+pdfpagemode=FullScreen,
+}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{frame=tb,
+language=Python,
+aboveskip=3mm,
+belowskip=3mm,
+stepnumber = 1,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=left,
+numberstyle=\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{dkgreen},
+stringstyle=\color{mauve},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=3
+}
+\numberwithin{equation}{section}
+
+\title{Notes of Lectures on Quantum Mechanics by P.M.Dirac}
+\author{Ting-Kai Hsu}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Transformation That Doesn't Change State}
+If we start with given initial variables and solve for the equations of motion, whose solutions should contain arbitrary functions of time $v_a(t)$ as we discuss above.
+The initial variables we need would $q\text{ and }p$ but not the initial value of arbitrary functions $v_a(t)$, and this is quite important because \textit{initial physical state} of the system is uniquely determined by $q$ and $p$ but not $v$, which is consistent with the system without constraints.
+\\\indent As time evolves, the initial state must determine the state at later time. 
+However, $q$ and $p$ would not be uniquely determined by the initial state due to the arbitrary functions in solutions of equations of motion.
+That means \textit{the state doesn't uniquely determine $q$ and $p$ but a given set of $q$ and $p$ would uniquely determine a state.}
+There must be several choices of $q$ and $p$ which correspond to the same physical state.
+To explicitly show this, consider a general dynamical variable $g$ with initial value $g_0$ and a short time interval $\delta t$.
+The value of this dynamical variable at time $\delta t$ would be given by the equations of motion,
+\[g(\delta t) = g_0 + \dot{g}\delta t\]
+\[ = g_0 + \left[g, H_{T}\right]\delta t\]
+\begin{equation}
+    \approx g_0\delta t\left\{[g, H'] + v_a[g, \phi_a]\right\}
+\end{equation}
+The coefficients $v$ are completely arbitrary thus we can consider different functions of time $v'$, which therefore gives a different $g(\delta t)$.
+Define the difference between different coefficients,
+\begin{equation}
+    \Delta g(\delta t) = \epsilon_a\left[g, \phi_a\right]
+\end{equation}\label{1.2}
+where
+\begin{equation}
+    \epsilon_a = \delta t(v_a - v'_a)
+\end{equation}
+which is a small arbitrary parameter, small because of short time interval $\delta t$ and arbitrary because of $v$ and $v'$.
+Consider changing all the Hamiltonian variables (like coordinates and canonical momentum) with the rule eq(\hyperref[1.2]{1.2}) yet would describe exactly the same state.
+We come to the conclusion that the $\phi_a$ which appear in the theory as primary, first-class constraints, have the meaning:
+\textit{as generating functions of infinitesimal contact transformations, they lead to changes in coordinates and canonical momenta that don't affect the physical state}.
+\\\indent  To push the theory further by considering successive contact infinitesimal transformations.
+First by $\epsilon_a\phi_a$ and then $\gamma_{a'}\phi_{a'}$, thus we have,
+\begin{equation}
+    \begin{split}
+        \Delta g = \epsilon_a\left[g, \phi_a\right]\\
+        \Delta' g = \gamma_{a'}\left[g+\Delta g, \phi_{a'}\right]
+    \end{split}
+\end{equation}
+
+Write them altogether,
+\begin{equation}
+    g''_1(\delta t) = g(\delta t) + \epsilon_a\left[g, \phi_a\right] + \gamma_{a'}\left[g+\epsilon_a\left[g, \phi_a\right], \phi_{a'}\right]
+\end{equation}
+
+However, if the transformations are applied in the reverse order, 
+\begin{equation}
+    g''_2(\delta t) = g(\delta t) + \gamma_{a'}\left[g, \phi_{a'}\right] + \epsilon_{a}\left[g+\gamma_{a'}\left[g, \phi_{a'}\right], \phi_a\right]
+\end{equation}
+
+These two would correspond to different change in $q$ and $p$, yet both of them wouldn't change the physical state.
+The difference between these two quantity would yield,
+\[\Delta_{12}g\equiv g''_1 - g''_2 \approx \epsilon_a\gamma_{a'}\left\{\left[\left[g, \phi_a\right], \phi_{a'}\right] - \left[\left[g, \phi_{a'}\right], \phi_a\right]\right\}\]
+Further simplify this by Jacobi identity, 
+\[\left[\left[g, \phi_a\right], \phi_{a'}\right] + \left[\left[\phi_a, \phi_{a'}\right], g\right] + \left[\left[\phi_{a'}, g\right], \phi_a\right] = 0 \]
+
+Then the equation becomes,
+\begin{equation}
+    \Delta_{12}g = \epsilon_a\gamma_{a'}\left[g, \left[\phi_a, \phi_{a'}\right]\right]
+\end{equation}
+
+Therefore, we immediately see that $\Delta_{12}g$ represents a change in Hamiltonian variables yet does not involve any change in the physical state.
+We use,
+\begin{equation}
+    \left[\phi_a, \phi_{a'}\right]
+\end{equation}
+as a generating function of infinitesimal contact transformation that causes no harm to the physical state.
+\\\indent By the theorem previously proved, the Poisson brackets of first-class constraints would be first-class, too.
+\\\indent The final result is that those transformations of dynamical variables which do not change physical states are infinitesimal contact transformations in which the generating functions is a primary first-class constraint or possibly a secondary first-class constraint.
+
+\end{document}
